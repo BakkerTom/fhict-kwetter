@@ -3,6 +3,8 @@ package model;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -16,11 +18,10 @@ public class Post implements Serializable {
 
     @ManyToOne
     private User author;
-
     private String content;
 
-    @PersistenceContext
-    private static EntityManager em;
+    @ManyToMany
+    private List<User> user;
 
     public Post() {
     }

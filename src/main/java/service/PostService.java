@@ -1,4 +1,4 @@
-package resource;
+package service;
 
 import dao.JPA;
 import dao.PostDao;
@@ -30,5 +30,9 @@ public class PostService {
 
     public List<Post> findAll() {
         return postDao.findAll();
+    }
+
+    public List<Post> findForUser(Long userID) {
+        return postDao.findForUser(userID);
     }
 }

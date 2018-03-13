@@ -1,12 +1,17 @@
 package model;
 
+import dao.PostDao;
+import service.PostService;
+
+import javax.inject.Inject;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @XmlRootElement
-@Table(name = "kwetterusers")
+@Table(name = "users")
 public class User implements Serializable {
 
     @Id
@@ -33,8 +38,21 @@ public class User implements Serializable {
         return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getEmail() {
         return email;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
 }
 

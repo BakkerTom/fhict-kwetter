@@ -7,6 +7,9 @@ import java.io.Serializable;
 
 @Entity
 @XmlRootElement
+@NamedQueries({
+        @NamedQuery(name = "Post.findForUser", query = "SELECT p FROM Post p WHERE p.author.id = :author")
+})
 public class Post implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,7 +38,15 @@ public class Post implements Serializable {
         return this.content;
     }
 
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     public User getAuthor() {
         return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }

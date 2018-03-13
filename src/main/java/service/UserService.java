@@ -1,3 +1,5 @@
+package service;
+
 import dao.JPA;
 import dao.UserDao;
 import model.User;
@@ -17,4 +19,7 @@ public class UserService {
         return dao.create(user);
     }
 
+    public User find(Long id) {
+        return dao.find(id);
+    }
 }

@@ -1,11 +1,10 @@
 package dao;
 
+import javafx.geometry.Pos;
 import model.Post;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +21,15 @@ public class PostDao {
     public void create(Post post) {
         em.persist(post);
     }
+
     public List<Post> findAll() {
         Query query = em.createQuery("SELECT s FROM Post s");
+        return new ArrayList<Post>(query.getResultList());
+    }
+
+    public List<Post> findForUser(Long userID) {
+        Query query = em.createNamedQuery("Post.findForUser", Post.class);
+        query.setParameter("author", userID);
         return new ArrayList<Post>(query.getResultList());
     }
 }

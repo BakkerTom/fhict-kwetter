@@ -1,6 +1,7 @@
 import model.Post;
 import model.User;
-import resource.PostService;
+import service.PostService;
+import service.UserService;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
